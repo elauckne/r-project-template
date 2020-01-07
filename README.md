@@ -1,16 +1,14 @@
 # R Project Template
 
-The R Project Template makes it easy to run different configurations (preprocessing, models, hypertuning) and evaluate their performance afterwards. It uses configuration files to specify details of a run and Markdown Reports to visualize data and results. 
+This R Project Template is derived from several real world projects on structured data and makes it easy to run different configurations (preprocessing, models, hypertuning) and evaluate their performance afterwards. It uses configuration files to specify details of a run and Markdown Reports to visualize data and results. 
 
-### Features
-
-A lot
+Author: Enrico Lauckner ([GitHub](github.com/elauckne))
 
 ### Pipeline
 
-Starting point, loads and runs specific configurations. It runs the following functions:
+Starting point, loads and runs specific configurations. It contains the following functions:
 
-* build_model_input: Data Preparation/Feature Engineering, needs to output IDs, x and y
+* build_model_input: Data Preparation/Feature Engineering, needs to output IDs, x and y. This has to be tailored to the specific data set
 * tune_parameters: Optional customized parameter tuning, which does not use carets grids for candidates
 * run_evaluate_models: Runs models (optionally with tuned parameters) and outputs results for evaluation
 
@@ -53,3 +51,7 @@ Markdown reports created with knitr and RStudio
 
 ### To Do
 * Adapt for Classification problems, currently only Regression problems can be run
+* Add Model interpretation like SHAP or LIME
+* Add Unit Tests
+* Add functionality for automated ML
+* Create Docker Image
