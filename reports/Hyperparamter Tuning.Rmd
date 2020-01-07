@@ -1,0 +1,68 @@
+---
+title: "Hyperparameter Tuning"
+output: html_document
+---
+
+```{r setup, , include=FALSE}
+knitr::opts_chunk$set(fig.width=6, fig.height=3)
+knitr::opts_chunk$set(echo=FALSE)
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+```
+
+```{r load, , include=FALSE}
+source('scripts/utils.R')
+load_libs()
+
+tuneplot <- function(x, probs = .90) {
+  ggplot(x) +
+    coord_cartesian(ylim = c(quantile(x$results$RMSE, probs = probs), min(x$results$RMSE))) +
+    theme_bw()
+}
+
+tunings <- 'tunings_abalone_cs.RData'
+dir_tunings <- paste0('data/output/', tunings)
+load(dir_tunings)
+```
+
+
+***
+
+## glmnet
+
+***
+
+```{r results='asis'}
+kable(md_tune_glmnet$bestTune, row.names = F, caption = 'Beste Parameter:') %>% kable_styling(full_width = F, position = "left")
+tuneplot(md_tune_glmnet)
+```
+
+
+## rqlasso
+
+***
+
+```{r results='asis', fig.width=5, fig.height=3}
+kable(md_tune_rqlasso$bestTune, row.names = F, caption = 'Beste Parameter:') %>% kable_styling(full_width = F, position = "left")
+tuneplot(md_tune_rqlasso)
+```
+
+
+
+## xgbtree
+
+***
+
+### First Tune
+
+```{r results='asis', fig.width=7, fig.height=3}
+kable(md_tune_xgbTree$bestTune, row.names = F, caption = 'Beste Parameter:') %>% kable_styling(full_width = F, position = "left")
+tuneplot(md_tune_xgbTree)
+```
+
+
+### Second Tune
+
+```{r results='asis'}
+kable(md_tune_xgbTree2$bestTune, row.names = F, caption = 'Beste Parameter:') %>% kable_styling(full_width = F, position = "left")
+tuneplot(md_tune_xgbTree2)
+```

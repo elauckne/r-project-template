@@ -1,0 +1,63 @@
+---
+title: "Model Evaluation"
+editor_options:
+  chunk_output_type: console
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+  word_document: default
+---
+
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F)
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+
+```
+
+```{r, include=FALSE}
+  source('scripts/utils.R')
+  load_libs()
+  load('data/output/models_abalone_cs.RData')
+```
+
+
+## Evaluation
+
+Duration
+
+```{r}
+plot_duration
+```
+
+Model Comparison
+
+```{r, fig.width=10, fig.height=3}
+plot_boxplot
+```
+
+## Best Model
+
+#### And the Winner is...
+
+There best Model by RMSE is `r best_model`.The following data is from this model. 
+
+------
+
+
+#### Plot Truth against Prediction
+
+
+```{r, fig.width=4, fig.height=4}
+plot_predvstruth
+```
+
+#### Plot Feature Importance
+
+
+```{r}
+plot_imp
+```
