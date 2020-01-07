@@ -38,6 +38,7 @@ Run group and run code description create a distinct name, which is used for all
 * feature_importance: Boolean for calculating feature importance using permutation
 
 **Model Config**
+
 The special model config ('_models.R') contains parameters or grids of parameter candidates for each model, which are used if tune is false
 
 ### Reports
